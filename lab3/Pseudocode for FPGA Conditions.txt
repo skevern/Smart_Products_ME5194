@@ -1,0 +1,25 @@
+//This is pseudocode that handles the different states for the FPGA
+//Scott Kevern & Heston Smith
+//2-8-18
+
+
+//Check 1
+	if ctl[0]					//if A and B are connected 
+		if (s[0] or s[6])		//if no connections or C&S
+			set ctl[0] = 1		//Set A & B true
+		else if (s[7] or s[1])	//if A&B or C&S are already connected 
+			do nothing
+	else set ctl[0] = 0			//Set A&B false
+	
+//Check 2	
+	if ctl[1]					//if A&C are requesting
+		if s[0] or s[5]			//if nothing or B&S
+			ctl[1] = 1			//Set A&C true and grant permission
+		else if s[8] or s[2]	//if A&C or B&S
+			do nothing 
+	else
+		ctl[1] = 0				//Set A&C false
+		
+//Check 3
+	
+	
