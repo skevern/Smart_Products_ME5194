@@ -54,7 +54,7 @@ public:
 // --------------------------------------MEM: Buffers to Read/Write  --------------------------------------------------
 //=====================================================================
 	std::deque<unsigned char>  stream_in;//used to receive and hold data of any length
-	std::deque<unsigned char> stream_out;// used to send  and hold data of any length
+	std::deque<unsigned char> stream_out;// used to send and hold data of any length
 	std::deque<int> transmit_len; // double ended queue of each of the transmitted messages
 	std::deque<int> receive_len;// double eneded queue of each of the received messages
 //=====================================================================

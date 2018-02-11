@@ -315,6 +315,8 @@ void I2C_Slave::i2cStreamOutBlock(unsigned char rgstr, unsigned char ptr_cmd, un
 		perror("Unable to send data");
 		return;
 	}
+	
+	
 	return;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			

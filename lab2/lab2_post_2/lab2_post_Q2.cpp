@@ -56,7 +56,7 @@ int main()
 {
 	int spi1_fd = open(SPI0_CS0, O_RDWR );
 	unsigned char result;
-	unsigned char  READ =0x03; // read byte from memory command
+	unsigned char READ =0x03; // read byte from memory command
 	unsigned char WRITE = 0x02; // write byte to memory command
 	unsigned char READ_STATUS= 0x05;
 	unsigned char WRITE_STATUS = 0x01;
@@ -92,11 +92,13 @@ int main()
 //=====================================================================
 // -------------------------------------------- Sending the SPI Transfers  -----------------------------------------------
 //=====================================================================	
-	SRAM.spiTransfer(32, 32, SEQ);
+	SRAM.spiTransfer(32, 32, SEQ);										//Perform the transfer and fill the stream_in deque
+	
 	for( int i = 0 ; i<SRAM.stream_in.size(); i++)
 	{
 	printf(" %X \n", (int)SRAM.stream_in[i]);
 	}
+	
 	close(spi1_fd);
 	//PmodIA.~I2C_Slave();// invoke the destructor and unmap the address
 	return 0;

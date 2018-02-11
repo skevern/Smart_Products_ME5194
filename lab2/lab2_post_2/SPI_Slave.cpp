@@ -13,6 +13,9 @@ _description: Definition file for a SPI slave class.
 */
 #include "SPI_Slave.h"
 #include <iostream>
+#include <deque>
+
+using namespace std;
 //=====================================================================
 // -------------------------------------- METH: Open/closing and utilities -------------------------------------------
 //=====================================================================
@@ -114,9 +117,77 @@ void SPI_Slave::spiTransfer(int outbuf_size, int inbuf_size, xferTiming xfer_typ
 	3. https://github.com/spotify/linux/blob/master/include/linux/spi/spidev.h
 	4. https://www.kernel.org/doc/Documentation/spi/spidev
 */
+//1) Check to see if there are any contents in the transmit_len deque
+	if (this->transmit_len.size() > 0)
+	{		
+	}
+	else return;
 
+//2) Set up conditions for both synchronous and sequential data transmission
+	if (xfer_type == SEQ)
+	{
+		//Enter sequential code here
+	}
+	else if (xfer_type == SYNC)
+	{
+		//Enter synchronous code here
+	}
+	
+int transmit_length = this->transmit_len.size();
+	
+//3) Loop through each entry in transmit_len
+for (int k = 0; k < transmit_length; k++)
+{
+	struct spi_ioc_transfer xfer[2];
+	unsigned char out_buf[outbuf_size];
+	int status, len;
 
+	memset(xfer, 0, sizeof(xfer));										//Set the amount of memory to be used, all zeroes
+	memset(out_buf, 0, sizeof(out_buf));								//Set the amount of memory to be send, all zeroes
 
+	len = sizeof(out_buf);
+
+		//3A) Fill the output buffer with the number of commands specified by transmit_len
+		for (int i = 0; i < this->transmit_len.front(); i++)
+		{
+			out_buf[i] = this->stream_out.front();
+			this->stream_out.pop_front();
+		}
+		
+		//3B) Set up a recieve buffer
+		unsigned char in_buf[inbuf_size], *bp; 
+		memset(in_buf, 0, sizeof(in_buf));								//Set the amount of memory to be send, all zeroes
+
+		//3C Fill the xfer message and send with ioctl
+		xfer[0].tx_buf = (unsigned long) out_buf;
+		xfer[0].len = this->transmit_len.front();
+
+		xfer[1].rx_buf = (unsigned long) in_buf;
+		xfer[1].len = this->receive_len.front();
+
+		status = ioctl(this->spi_fd,SPI_IOC_MESSAGE(2),xfer);
+		
+		//3D Place the returned contents into the stream_in deque
+		for (int j = 0; j < this->receive_len.front(); j++)
+		{
+			this->stream_in.push_back((uint8_t) in_buf[j]);
+			printf("I pushed a value into the receive_len deque\n");
+		}
+		
+
+		//Check for errors
+		if (status < 0)
+		{
+			perror("SPI_IOC_MESSAGE");
+			return;
+		}
+		
+		//Pop the transmit and recieve deques
+		this->transmit_len.pop_front();
+		this->receive_len.pop_front();
+}
+
+return;
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 }
