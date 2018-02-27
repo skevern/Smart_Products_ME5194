@@ -88,8 +88,8 @@ int main()
     //Dobot.goToHome();
     
     int ypos[2] = { -20, 20};
-    int xpos[3] = { 300, 260, 220 };
-    int z_pickup = -34;
+    int xpos[3] = { 260, 220, 180 };
+    int z_pickup = -36;
     int drop_xyz[3] = {280, -100, 125};
     
     for(int x_travel = 0; x_travel < 3; x_travel++)
@@ -98,10 +98,11 @@ int main()
 		{
 			Dobot.goToXYZ(xpos[x_travel], ypos[y_travel], z_pickup, true);	//Go to the pickup position
 			Dobot.setPump(true, true);										//Turn the pump on 
-			//Dobot.wait(500);								
-			//Dobot.goToXYZ(xpos[x_travel], drop_xyz[1], drop_xyz[2], true);		//Go to the ball drop location
+			Dobot.wait(500);								
+			Dobot.goToXYZ(xpos[x_travel], ypos[y_travel], drop_xyz[2], true);		//Go to the ball drop location
 			Dobot.goToXYZ(drop_xyz[0], drop_xyz[1], drop_xyz[2], true);		//Go to the ball drop location
 			Dobot.setPump(false, true);										//Turn the pump off
+			Dobot.goToXYZ(xpos[x_travel], ypos[y_travel], drop_xyz[2], true);		//Go to the ball drop location
 			std::cout << "I'm trying to turn the pump off!" << std::endl;
 			//Dobot.wait(500);
 		}
