@@ -1,0 +1,3 @@
+/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles/rebuild_cache.dir
+/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles/edit_cache.dir
+/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles/Slam.dir
