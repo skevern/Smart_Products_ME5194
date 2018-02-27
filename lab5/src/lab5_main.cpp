@@ -76,11 +76,8 @@ int main()
 	 ***************************************************************************************************/
 	std:string fname = "./LidarData.xyz";				// Logger File name
 	int i2c1_fd = wiringPiI2CSetup(LL_I2C_ADDR);	// Setting up shared I2C Bus
-	/******
 	
-	 	COMPLETE THE SETUP
-	
-	****/
+	SLAM slam;															//Create a slam object
 
 	
 	/****************************************************************************************************
@@ -109,17 +106,9 @@ int main()
 	 		feedback measurement and lidar measurements to create a stable scanning motion.
 	***********************************************************************************************************/
 	
-	
-	
-	
-		/******
-	
-	 	COMPLETE THE MAIN LOOP
-	
-		****/
-	
-	
-	
+	float XYZ[3] = {0, 0, 0};
+	slam.transform(10, 3.14, 0, XYZ);
+	std::cout << "The X,Y,Z transform values are: X=" << XYZ[0] << ", Y=" << XYZ[1] << ", Z=" << XYZ[2] << endl;
 	
 
 	
