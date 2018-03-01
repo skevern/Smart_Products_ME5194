@@ -35,6 +35,11 @@
 				2. sudo make
 			Once you have completed these steps you can then run your application
 				1. sudo ./Slam
+				* 
+				* 	* git status
+				* git add --all
+				* git commit -m "updated servo movement and added build files to lab5" 
+				* git push
 				
 ***************************************References******************************************************
 	
@@ -105,12 +110,12 @@ int main()
 	 	5. Use the function usleep(int microseconds) to create delays between actuation,
 	 		feedback measurement and lidar measurements to create a stable scanning motion.
 	***********************************************************************************************************/
-	
+	//Transformation
 	float XYZ[3] = {0, 0, 0};
 	slam.transform(10, 3.14, 0, XYZ);
 	std::cout << "The X,Y,Z transform values are: X=" << XYZ[0] << ", Y=" << XYZ[1] << ", Z=" << XYZ[2] << endl;
 	
-
+	//Servo Motion
 	
 	
 	/**************************************************************
