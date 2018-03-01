@@ -83,6 +83,7 @@ int main()
 	int i2c1_fd = wiringPiI2CSetup(LL_I2C_ADDR);	// Setting up shared I2C Bus
 	
 	SLAM slam;															//Create a slam object
+	PanTilt pantilt(i2c1_fd);                                                    //Create PanTilt object
 
 	
 	/****************************************************************************************************
@@ -126,12 +127,12 @@ int main()
 	 	for (theta2=90; theta2>20; theta2--)
 	 
 	 	{ 	
-			set_angle(SERVO2,theta2);     //sets the angle of servo 2
+			pantilt.set_angle(SERVO_2,theta2);     //sets the angle of servo 2
 			//get angle and assign to array of servo 2 angles
 			
 			for (theta1=-90; theta1<90; theta1++)
 	 	 {
-			set_angle(SERVO1,theta1);     //sets the angle of servo 2
+			pantilt.set_angle(SERVO_1,theta1);     //sets the angle of servo 1
 			//get angle and assign to array of servo 1 angles
 			
 	 	    //get the other data 
@@ -142,6 +143,7 @@ int main()
 		  }
 		i++;                             //increment servo 2 array
 	 	 }
+	 	
 	
 	/**************************************************************
 		End Data log & Begin Display Point Cloud
