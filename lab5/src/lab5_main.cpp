@@ -116,7 +116,32 @@ int main()
 	std::cout << "The X,Y,Z transform values are: X=" << XYZ[0] << ", Y=" << XYZ[1] << ", Z=" << XYZ[2] << endl;
 	
 	//Servo Motion
+		int theta1;
+		int theta2;
+		int i=0;
+		int j=0;
+		//array1
+		//array2
 	
+	 	for (theta2=90; theta2>20; theta2--)
+	 
+	 	{ 	
+			set_angle(SERVO2,theta2);     //sets the angle of servo 2
+			//get angle and assign to array of servo 2 angles
+			
+			for (theta1=-90; theta1<90; theta1++)
+	 	 {
+			set_angle(SERVO1,theta1);     //sets the angle of servo 2
+			//get angle and assign to array of servo 1 angles
+			
+	 	    //get the other data 
+	 	    
+	 	    usleep(500);                 // wait for 500 ms between motions 
+	 	    
+	 	    j++;                         //increment servo 1 array
+		  }
+		i++;                             //increment servo 2 array
+	 	 }
 	
 	/**************************************************************
 		End Data log & Begin Display Point Cloud
