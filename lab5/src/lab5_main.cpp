@@ -119,12 +119,12 @@ int main()
 	//Servo Motion
 		int theta1;
 		int theta2;
-		int i=0;
-		int j=0;
+		//int i=0;
+		//int j=0;
 		//array1
 		//array2
 	
-	 	for (theta2=90; theta2>20; theta2--)
+	 	for (theta2=90; theta2>20; theta2-3)
 	 
 	 	{ 	
 			pantilt.set_angle(SERVO_2,theta2);     //sets the angle of servo 2
@@ -137,11 +137,11 @@ int main()
 			
 	 	    //get the other data 
 	 	    
-	 	    usleep(500);                 // wait for 500 ms between motions 
+	 	    usleep(100000);                 // wait for 1s between motions 
 	 	    
-	 	    j++;                         //increment servo 1 array
+	 	    //j++;                         //increment servo 1 array
 		  }
-		i++;                             //increment servo 2 array
+		    //i++;                             //increment servo 2 array
 	 	 }
 	 	
 	
