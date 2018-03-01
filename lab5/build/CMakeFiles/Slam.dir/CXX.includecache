@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.cpp
+/home/pi/Desktop/Smart Products/lab5/src/Camera.cpp
 Camera.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.h
+/home/pi/Desktop/Smart Products/lab5/src/Camera.h
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.h
+/home/pi/Desktop/Smart Products/lab5/src/Camera.h
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.cpp
+/home/pi/Desktop/Smart Products/lab5/src/LidarLite.cpp
 LidarLite.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.h
+/home/pi/Desktop/Smart Products/lab5/src/LidarLite.h
 stdio.h
 -
 stdlib.h
@@ -54,7 +54,7 @@ wiringPiI2C.h
 math.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.h
+/home/pi/Desktop/Smart Products/lab5/src/LidarLite.h
 stdio.h
 -
 stdlib.h
@@ -94,9 +94,9 @@ deque
 wiringPiI2C.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.cpp
+/home/pi/Desktop/Smart Products/lab5/src/PanTilt.cpp
 PanTilt.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.h
+/home/pi/Desktop/Smart Products/lab5/src/PanTilt.h
 stdio.h
 -
 stdlib.h
@@ -136,7 +136,7 @@ wiringPiI2C.h
 math.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.h
+/home/pi/Desktop/Smart Products/lab5/src/PanTilt.h
 stdio.h
 -
 stdlib.h
@@ -176,29 +176,29 @@ deque
 wiringPiI2C.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.cpp
+/home/pi/Desktop/Smart Products/lab5/src/SLAM.cpp
 SLAM.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.h
+/home/pi/Desktop/Smart Products/lab5/src/SLAM.h
 math.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.h
+/home/pi/Desktop/Smart Products/lab5/src/SLAM.h
 Viz.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.h
+/home/pi/Desktop/Smart Products/lab5/src/Viz.h
 LidarLite.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.h
+/home/pi/Desktop/Smart Products/lab5/src/LidarLite.h
 PanTilt.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.h
+/home/pi/Desktop/Smart Products/lab5/src/PanTilt.h
 Camera.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.h
+/home/pi/Desktop/Smart Products/lab5/src/Camera.h
 math.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.cpp
+/home/pi/Desktop/Smart Products/lab5/src/Viz.cpp
 Viz.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.h
+/home/pi/Desktop/Smart Products/lab5/src/Viz.h
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.h
+/home/pi/Desktop/Smart Products/lab5/src/Viz.h
 sstream
 -
 fstream
@@ -234,7 +234,7 @@ vtkAxesActor.h
 vtkTubeFilter.h
 -
 
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/lab5_main.cpp
+/home/pi/Desktop/Smart Products/lab5/src/lab5_main.cpp
 iostream
 -
 stdio.h
@@ -252,15 +252,15 @@ signal.h
 unistd.h
 -
 PanTilt.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.h
+/home/pi/Desktop/Smart Products/lab5/src/PanTilt.h
 LidarLite.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.h
+/home/pi/Desktop/Smart Products/lab5/src/LidarLite.h
 Viz.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.h
+/home/pi/Desktop/Smart Products/lab5/src/Viz.h
 SLAM.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.h
+/home/pi/Desktop/Smart Products/lab5/src/SLAM.h
 Camera.h
-/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.h
+/home/pi/Desktop/Smart Products/lab5/src/Camera.h
 wiringPiI2C.h
 -
 sstream

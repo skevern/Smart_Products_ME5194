@@ -70,8 +70,9 @@
 #include<sstream>
 #include<fstream>
 #include<string.h>
+#define Pi 3.14159265358979323846
 
- using namespace std;
+using namespace std;
 
 int main()
 {
@@ -83,8 +84,9 @@ int main()
 	int i2c1_fd = wiringPiI2CSetup(LL_I2C_ADDR);						//Setting up shared I2C Bus
 	SLAM slam;															//Create a slam object
 	PanTilt pantilt(i2c1_fd);                                           //Create PanTilt object
-	LidarLite lidarlite;												//Create a Lidar object
-	Viz	viz;															//Create a visualizer object
+	LidarLite lidarlite(i2c1_fd);										//Create a Lidar object
+	std::string filename = "test_data";									//Filename for storing the data
+	Viz	viz(filename);													//Create a visualizer object
 	
 	lidarlite.connect();												//Connect the lidar 										
 											
@@ -120,31 +122,26 @@ int main()
 	
 	
 	//Scan the servo across the entire range of motion and collect data
-	for (int theta2 = 90; theta2 > 20; theta2 - theta_step)
+	for (int theta2 = 90; theta2 > 20; theta2 -= theta_step)
 	{ 	
 		pantilt.set_angle(SERVO_2,theta2);     								//increment the angle of the XY Servo 
 		
-		for (int theta1 = -90; theta1 < 90; theta1 + theta_step)
+		for (int theta1 = -90; theta1 < 90; theta1 += theta_step)
 			{
 				pantilt.set_angle(SERVO_1,theta1);     						//increment the angle of the vertical Servo
-				usleep(100000);                 							//wait for servo motion to complete before taking a lidar measurement
-				//lidar_distance = lidarlite.distance();						//take the lidar measurement
-				slam.transform(lidar_distance, (theta * pi) / 180.0f, (theta2 * pi) / 180.0f, XYZ_temp);	//Fill the XYZ_temp variable with the transform
+				usleep(10000);                 								//wait for servo motion to complete before taking a lidar measurement
+				//lidar_distance = lidarlite.distance();					//take the lidar measurement
+				slam.transform(lidar_distance, (theta1 * Pi) / 180.0f, (theta2 * Pi) / 180.0f, XYZ_temp);	//Fill the XYZ_temp variable with the transform
 				viz.logData(XYZ_temp);
-				std::cout << "The X,Y,Z transform values are: X=" << XYZ_temp[0] << ", Y=" << XYZ_temp[1] << ", Z=" << XYZ_temp[2] << endl;
-			}
+			}	
 	}
-	 	
+	
 	
 	/**************************************************************
 		End Data log & Begin Display Point Cloud
 	****************************************************************/
-	
-		/******
-	
-	 	COMPLETE THE MAIN LOOP
-	
-		****/
+	viz.closeLogger();
+	viz.displayPointCloud();
 		
 
   return EXIT_SUCCESS;

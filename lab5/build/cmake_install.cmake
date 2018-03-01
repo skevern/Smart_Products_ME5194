@@ -1,4 +1,4 @@
-# Install script for directory: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src
+# Install script for directory: /home/pi/Desktop/Smart Products/lab5/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pi/Desktop/Smart Products/lab5/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

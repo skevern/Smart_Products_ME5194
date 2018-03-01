@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src
+CMAKE_SOURCE_DIR = "/home/pi/Desktop/Smart Products/lab5/src"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build
+CMAKE_BINARY_DIR = "/home/pi/Desktop/Smart Products/lab5/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Slam.dir/depend.make
@@ -58,17 +58,17 @@ include CMakeFiles/Slam.dir/progress.make
 include CMakeFiles/Slam.dir/flags.make
 
 CMakeFiles/Slam.dir/lab5_main.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/lab5_main.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/lab5_main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Slam.dir/lab5_main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/lab5_main.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/lab5_main.cpp
+CMakeFiles/Slam.dir/lab5_main.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/lab5_main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Slam.dir/lab5_main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/lab5_main.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/lab5_main.cpp"
 
 CMakeFiles/Slam.dir/lab5_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/lab5_main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/lab5_main.cpp > CMakeFiles/Slam.dir/lab5_main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/lab5_main.cpp" > CMakeFiles/Slam.dir/lab5_main.cpp.i
 
 CMakeFiles/Slam.dir/lab5_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/lab5_main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/lab5_main.cpp -o CMakeFiles/Slam.dir/lab5_main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/lab5_main.cpp" -o CMakeFiles/Slam.dir/lab5_main.cpp.s
 
 CMakeFiles/Slam.dir/lab5_main.cpp.o.requires:
 
@@ -82,17 +82,17 @@ CMakeFiles/Slam.dir/lab5_main.cpp.o.provides.build: CMakeFiles/Slam.dir/lab5_mai
 
 
 CMakeFiles/Slam.dir/SLAM.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/SLAM.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Slam.dir/SLAM.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/SLAM.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.cpp
+CMakeFiles/Slam.dir/SLAM.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/SLAM.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Slam.dir/SLAM.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/SLAM.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/SLAM.cpp"
 
 CMakeFiles/Slam.dir/SLAM.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/SLAM.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.cpp > CMakeFiles/Slam.dir/SLAM.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/SLAM.cpp" > CMakeFiles/Slam.dir/SLAM.cpp.i
 
 CMakeFiles/Slam.dir/SLAM.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/SLAM.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/SLAM.cpp -o CMakeFiles/Slam.dir/SLAM.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/SLAM.cpp" -o CMakeFiles/Slam.dir/SLAM.cpp.s
 
 CMakeFiles/Slam.dir/SLAM.cpp.o.requires:
 
@@ -106,17 +106,17 @@ CMakeFiles/Slam.dir/SLAM.cpp.o.provides.build: CMakeFiles/Slam.dir/SLAM.cpp.o
 
 
 CMakeFiles/Slam.dir/PanTilt.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/PanTilt.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Slam.dir/PanTilt.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/PanTilt.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.cpp
+CMakeFiles/Slam.dir/PanTilt.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/PanTilt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Slam.dir/PanTilt.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/PanTilt.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/PanTilt.cpp"
 
 CMakeFiles/Slam.dir/PanTilt.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/PanTilt.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.cpp > CMakeFiles/Slam.dir/PanTilt.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/PanTilt.cpp" > CMakeFiles/Slam.dir/PanTilt.cpp.i
 
 CMakeFiles/Slam.dir/PanTilt.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/PanTilt.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/PanTilt.cpp -o CMakeFiles/Slam.dir/PanTilt.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/PanTilt.cpp" -o CMakeFiles/Slam.dir/PanTilt.cpp.s
 
 CMakeFiles/Slam.dir/PanTilt.cpp.o.requires:
 
@@ -130,17 +130,17 @@ CMakeFiles/Slam.dir/PanTilt.cpp.o.provides.build: CMakeFiles/Slam.dir/PanTilt.cp
 
 
 CMakeFiles/Slam.dir/Viz.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/Viz.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Slam.dir/Viz.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/Viz.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.cpp
+CMakeFiles/Slam.dir/Viz.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/Viz.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Slam.dir/Viz.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/Viz.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/Viz.cpp"
 
 CMakeFiles/Slam.dir/Viz.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/Viz.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.cpp > CMakeFiles/Slam.dir/Viz.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/Viz.cpp" > CMakeFiles/Slam.dir/Viz.cpp.i
 
 CMakeFiles/Slam.dir/Viz.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/Viz.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Viz.cpp -o CMakeFiles/Slam.dir/Viz.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/Viz.cpp" -o CMakeFiles/Slam.dir/Viz.cpp.s
 
 CMakeFiles/Slam.dir/Viz.cpp.o.requires:
 
@@ -154,17 +154,17 @@ CMakeFiles/Slam.dir/Viz.cpp.o.provides.build: CMakeFiles/Slam.dir/Viz.cpp.o
 
 
 CMakeFiles/Slam.dir/LidarLite.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/LidarLite.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Slam.dir/LidarLite.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/LidarLite.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.cpp
+CMakeFiles/Slam.dir/LidarLite.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/LidarLite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Slam.dir/LidarLite.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/LidarLite.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/LidarLite.cpp"
 
 CMakeFiles/Slam.dir/LidarLite.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/LidarLite.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.cpp > CMakeFiles/Slam.dir/LidarLite.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/LidarLite.cpp" > CMakeFiles/Slam.dir/LidarLite.cpp.i
 
 CMakeFiles/Slam.dir/LidarLite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/LidarLite.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/LidarLite.cpp -o CMakeFiles/Slam.dir/LidarLite.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/LidarLite.cpp" -o CMakeFiles/Slam.dir/LidarLite.cpp.s
 
 CMakeFiles/Slam.dir/LidarLite.cpp.o.requires:
 
@@ -178,17 +178,17 @@ CMakeFiles/Slam.dir/LidarLite.cpp.o.provides.build: CMakeFiles/Slam.dir/LidarLit
 
 
 CMakeFiles/Slam.dir/Camera.cpp.o: CMakeFiles/Slam.dir/flags.make
-CMakeFiles/Slam.dir/Camera.cpp.o: /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Slam.dir/Camera.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/Camera.cpp.o -c /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.cpp
+CMakeFiles/Slam.dir/Camera.cpp.o: /home/pi/Desktop/Smart\ Products/lab5/src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Slam.dir/Camera.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Slam.dir/Camera.cpp.o -c "/home/pi/Desktop/Smart Products/lab5/src/Camera.cpp"
 
 CMakeFiles/Slam.dir/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Slam.dir/Camera.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.cpp > CMakeFiles/Slam.dir/Camera.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/pi/Desktop/Smart Products/lab5/src/Camera.cpp" > CMakeFiles/Slam.dir/Camera.cpp.i
 
 CMakeFiles/Slam.dir/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Slam.dir/Camera.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/Camera.cpp -o CMakeFiles/Slam.dir/Camera.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/pi/Desktop/Smart Products/lab5/src/Camera.cpp" -o CMakeFiles/Slam.dir/Camera.cpp.s
 
 CMakeFiles/Slam.dir/Camera.cpp.o.requires:
 
@@ -401,7 +401,7 @@ Slam: /usr/lib/arm-linux-gnueabihf/libvtksys-6.3.so.6.3.0
 Slam: /usr/lib/arm-linux-gnueabihf/libproj.so
 Slam: /usr/lib/arm-linux-gnueabihf/libvtkCommonCore-6.3.so.6.3.0
 Slam: CMakeFiles/Slam.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Slam"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Slam"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Slam.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -423,6 +423,6 @@ CMakeFiles/Slam.dir/clean:
 .PHONY : CMakeFiles/Slam.dir/clean
 
 CMakeFiles/Slam.dir/depend:
-	cd /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build /home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/build/CMakeFiles/Slam.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/pi/Desktop/Smart Products/lab5/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/pi/Desktop/Smart Products/lab5/src" "/home/pi/Desktop/Smart Products/lab5/src" "/home/pi/Desktop/Smart Products/lab5/build" "/home/pi/Desktop/Smart Products/lab5/build" "/home/pi/Desktop/Smart Products/lab5/build/CMakeFiles/Slam.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Slam.dir/depend
 

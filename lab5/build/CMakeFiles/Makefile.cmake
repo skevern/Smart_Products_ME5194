@@ -10,7 +10,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.7.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.7.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.7.2/CMakeSystem.cmake"
-  "/home/pi/Desktop/smart_prods_shared/Smart_Products_ME5194/lab5/src/CMakeLists.txt"
+  "/home/pi/Desktop/Smart Products/lab5/src/CMakeLists.txt"
   "/usr/lib/arm-linux-gnueabihf/cmake/Qt5Core/Qt5CoreConfig.cmake"
   "/usr/lib/arm-linux-gnueabihf/cmake/Qt5Core/Qt5CoreConfigExtras.cmake"
   "/usr/lib/arm-linux-gnueabihf/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake"
