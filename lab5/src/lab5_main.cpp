@@ -79,13 +79,15 @@ int main()
 	/****************************************************************************************************
 	 								Setup 
 	 ***************************************************************************************************/
-	std:string fname = "./LidarData.xyz";				// Logger File name
-	int i2c1_fd = wiringPiI2CSetup(LL_I2C_ADDR);	// Setting up shared I2C Bus
-	
+	std:string fname = "./LidarData.xyz";								//Logger File name
+	int i2c1_fd = wiringPiI2CSetup(LL_I2C_ADDR);						//Setting up shared I2C Bus
 	SLAM slam;															//Create a slam object
-	PanTilt pantilt(i2c1_fd);                                                    //Create PanTilt object
-
+	PanTilt pantilt(i2c1_fd);                                           //Create PanTilt object
+	LidarLite lidarlite;												//Create a Lidar object
+	Viz	viz;															//Create a visualizer object
 	
+	lidarlite.connect();												//Connect the lidar 										
+											
 	/****************************************************************************************************
 	 						Main Data Collection Loop:
 	 ***************************************************************************************************
@@ -111,38 +113,27 @@ int main()
 	 	5. Use the function usleep(int microseconds) to create delays between actuation,
 	 		feedback measurement and lidar measurements to create a stable scanning motion.
 	***********************************************************************************************************/
-	//Transformation
-	float XYZ[3] = {0, 0, 0};
-	slam.transform(10, 3.14, 0, XYZ);
-	std::cout << "The X,Y,Z transform values are: X=" << XYZ[0] << ", Y=" << XYZ[1] << ", Z=" << XYZ[2] << endl;
+	viz.initiateLogger();													//Start logging the data
+	float XYZ_temp[3] = {0, 0, 0};											//Create a temporary array to store the transform data
+	int theta_step = 3;														//How many degrees between each step
+	int lidar_distance = 10; 													//Store the lidar distance
 	
-	//Servo Motion
-		int theta1;
-		int theta2;
-		//int i=0;
-		//int j=0;
-		//array1
-		//array2
 	
-	 	for (theta2=90; theta2>20; theta2-3)
-	 
-	 	{ 	
-			pantilt.set_angle(SERVO_2,theta2);     //sets the angle of servo 2
-			//get angle and assign to array of servo 2 angles
-			
-			for (theta1=-90; theta1<90; theta1++)
-	 	 {
-			pantilt.set_angle(SERVO_1,theta1);     //sets the angle of servo 1
-			//get angle and assign to array of servo 1 angles
-			
-	 	    //get the other data 
-	 	    
-	 	    usleep(100000);                 // wait for 1s between motions 
-	 	    
-	 	    //j++;                         //increment servo 1 array
-		  }
-		    //i++;                             //increment servo 2 array
-	 	 }
+	//Scan the servo across the entire range of motion and collect data
+	for (int theta2 = 90; theta2 > 20; theta2 - theta_step)
+	{ 	
+		pantilt.set_angle(SERVO_2,theta2);     								//increment the angle of the XY Servo 
+		
+		for (int theta1 = -90; theta1 < 90; theta1 + theta_step)
+			{
+				pantilt.set_angle(SERVO_1,theta1);     						//increment the angle of the vertical Servo
+				usleep(100000);                 							//wait for servo motion to complete before taking a lidar measurement
+				//lidar_distance = lidarlite.distance();						//take the lidar measurement
+				slam.transform(lidar_distance, (theta * pi) / 180.0f, (theta2 * pi) / 180.0f, XYZ_temp);	//Fill the XYZ_temp variable with the transform
+				viz.logData(XYZ_temp);
+				std::cout << "The X,Y,Z transform values are: X=" << XYZ_temp[0] << ", Y=" << XYZ_temp[1] << ", Z=" << XYZ_temp[2] << endl;
+			}
+	}
 	 	
 	
 	/**************************************************************
