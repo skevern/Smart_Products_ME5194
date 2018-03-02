@@ -118,22 +118,28 @@ int main()
 	viz.initiateLogger();													//Start logging the data
 	float XYZ_temp[3] = {0, 0, 0};											//Create a temporary array to store the transform data
 	int theta_step = 3;														//How many degrees between each step
-	int lidar_distance = 10; 													//Store the lidar distance
+	int lidar_distance; 													//Store the lidar distance
 	
 	
 	//Scan the servo across the entire range of motion and collect data
-	for (int theta2 = 90; theta2 > 20; theta2 -= theta_step)
+	for (int theta2 = -70; theta2 < 20; theta2 += theta_step)
 	{ 	
-		pantilt.set_angle(SERVO_2,theta2);     								//increment the angle of the XY Servo 
+		pantilt.set_angle(SERVO_1,theta2);     								//increment the angle of the XY Servo 
 		
 		for (int theta1 = -90; theta1 < 90; theta1 += theta_step)
 			{
-				pantilt.set_angle(SERVO_1,theta1);     						//increment the angle of the vertical Servo
-				usleep(10000);                 								//wait for servo motion to complete before taking a lidar measurement
-				//lidar_distance = lidarlite.distance();					//take the lidar measurement
+				pantilt.set_angle(SERVO_2,theta1);     						//increment the angle of the vertical Servo
+				usleep(500000);              								//wait for servo motion to complete before taking a lidar measurement
+				lidar_distance = lidarlite.distance(true);						//take the lidar measurement
 				slam.transform(lidar_distance, (theta1 * Pi) / 180.0f, (theta2 * Pi) / 180.0f, XYZ_temp);	//Fill the XYZ_temp variable with the transform
 				viz.logData(XYZ_temp);
-			}	
+			}
+		for (int theta1 = 90; theta1 > -90; theta1 -= theta_step)
+			{
+				pantilt.set_angle(SERVO_2,theta1); 
+				usleep(70000);
+			}
+	cout << "Oh sweet, sweet data \_(^-^)_/" << endl;
 	}
 	
 	
