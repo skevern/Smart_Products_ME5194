@@ -10,7 +10,7 @@ clear im_pts_x im_pts_y im_label
 
 %% Filtering the Keypoints
 image_string_bl = 'blank_test_image.jpg';
-% image_string_x = 'test_image_label.bmp';
+image_string_x = 'test_image_label.bmp';
 
 
 % the number of pixels that x,y must be seperated by to be a unique
@@ -41,29 +41,19 @@ for i= 1:length(corners1(:,1))
         condx = 0;
         condy = 0;
         
-        %Not sure why this is necessary, we're setting rx and ry equal to
-        %dx and dy no matter what 
-        if dx>=corners1(i,2)
-            rx = dx;
-        else
-            rx = dx;
-        end
-        if dy>=corners1(i,3)
-            ry = dy;
-        else
-            ry = dy;
-        end  
+        %Note, I deleted some code here that wasn't doing anything, replaced
+        %rx and ry with dx and dy 
         
         %Check proximity condition in x-direction
-        if corners1(i,2)<=im_pts_x(j)+rx && corners1(i,2)>=im_pts_x(j)-rx
+        if corners1(i,2)<=im_pts_x(j)+dx && corners1(i,2)>=im_pts_x(j)-dx
             condx = 1;
         end
         %Check proximity condition in y-direction
-        if corners1(i,3)<=im_pts_y(j)+ry && corners1(i,3)>=im_pts_y(j)-ry
+        if corners1(i,3)<=im_pts_y(j)+dy && corners1(i,3)>=im_pts_y(j)-dy
             condy = 1;
         end
         
-        %If point fails both condition x and y, don't save it 
+        %If point fails both condition x and y, don't add it to our list
         if condx ==1 && condy ==1
             break
         
@@ -86,10 +76,10 @@ I_bl = imread(image_string_bl);
 I_x = imread(image_string_x);
 Im_bl_pad = padarray(I_bl,[padx,pady],100,'post');
 % RGB = insertText(I_bl,corners1(:,2:3),corners1(:,1),'FontSize',7,'BoxColor','green');
-Im_bl_pad = insertMarker(Im_bl_pad,[im_pts_x',im_pts_y'],'+','color','red');
-RGB = insertText(Im_bl_pad,[im_pts_x',im_pts_y'],im_label','FontSize',7,'BoxColor','green');
-figure()
-image((RGB))
+%Im_bl_pad = insertMarker(Im_bl_pad,[im_pts_x',im_pts_y'],'+','color','red');
+%RGB = insertText(Im_bl_pad,[im_pts_x',im_pts_y'],im_label','FontSize',7,'BoxColor','green');
+%figure()
+%image((RGB))
 % figure()
 % image((I_x))
 % imshow(I_temp)
@@ -116,3 +106,10 @@ fclose(fileID);
 % keypoint (X,Y,Z) and its corresponding image points
 % (x1,y1),(x2,y2),(x3,y3) and construct the calibration matrix using the
 % routine shown in the lab documents. Then solve for the camera parameters.
+
+% Step 1) Gather all of the keypoint data from the three im 
+
+%Using the formula Q = (D^T * D)^-1 * D^T * R 
+R = 
+
+

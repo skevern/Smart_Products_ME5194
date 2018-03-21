@@ -106,3 +106,11 @@ fclose(fileID);
 % keypoint (X,Y,Z) and its corresponding image points
 % (x1,y1),(x2,y2),(x3,y3) and construct the calibration matrix using the
 % routine shown in the lab documents. Then solve for the camera parameters.
+
+% Step 1) Gather all of the keypoint data from the three images 
+
+% Step 2) Fill the D & R matricies 
+
+% Step 3) Use the following formula to solve for camera parameters Q = (D^T * D)^-1 * D^T * R 
+
+
