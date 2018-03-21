@@ -1,0 +1,51 @@
+List of Key-Points from an image taken from the camera of interest.
+The Camera is positioned in the World Coordinates at x = 0mm, y = 0mm, z = 222 mm.
+Each Black square is equivalent to 40mm in the World coordinates.
+The world origin is (x,y,z) =(0,0,0) and it coorsponds to keypoint-36in the calibration image.
+You do not need to use all of the points, but of course you may.
+
+Label:1		 x:95		 y:74
+Label:2		 x:117		 y:73
+Label:3		 x:118		 y:51
+Label:4		 x:95		 y:50
+Label:5		 x:2		 y:72
+Label:6		 x:22		 y:74
+Label:7		 x:22		 y:50
+Label:8		 x:4		 y:50
+Label:9		 x:140		 y:73
+Label:10		 x:158		 y:71
+Label:11		 x:158		 y:50
+Label:12		 x:142		 y:50
+Label:13		 x:23		 y:97
+Label:14		 x:46		 y:97
+Label:15		 x:47		 y:75
+Label:16		 x:71		 y:97
+Label:17		 x:94		 y:96
+Label:18		 x:71		 y:74
+Label:19		 x:118		 y:96
+Label:20		 x:138		 y:95
+Label:21		 x:94		 y:118
+Label:22		 x:115		 y:118
+Label:23		 x:137		 y:116
+Label:24		 x:156		 y:114
+Label:25		 x:157		 y:94
+Label:26		 x:47		 y:119
+Label:27		 x:70		 y:118
+Label:28		 x:12		 y:24
+Label:29		 x:21		 y:23
+Label:30		 x:20		 y:3
+Label:31		 x:1		 y:24
+Label:32		 x:141		 y:26
+Label:33		 x:159		 y:26
+Label:34		 x:158		 y:3
+Label:35		 x:141		 y:3
+Label:36		 x:71		 y:50
+Label:37		 x:47		 y:51
+Label:38		 x:47		 y:25
+Label:39		 x:71		 y:26
+Label:40		 x:70		 y:1
+Label:41		 x:46		 y:2
+Label:42		 x:96		 y:26
+Label:43		 x:118		 y:25
+Label:44		 x:118		 y:2
+Label:45		 x:95		 y:2
