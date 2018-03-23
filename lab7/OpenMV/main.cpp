@@ -33,11 +33,12 @@ int main (void)
 	while(i<10)
 	{
 		int send_data = 5;
-      		serialPutchar (fd1, count);
+      		serialPutchar (fd1, send_data);
       		int num = 0;
       		while(num==0)
       		{
       			num =serialDataAvail(fd1);
+      			//intf("Checking for serial data available\n");
       			usleep(1000);
       		}
       		data = serialGetchar(fd1);

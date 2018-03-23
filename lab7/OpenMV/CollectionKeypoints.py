@@ -25,7 +25,7 @@ clock = time.clock()
 
 #Initialize Parameters
 #################################
-fo = open("corners8.txt","w")
+fo = open("corners6.txt","w")
 iters = 0
 cal_points = []
 unique_cal_points = []
@@ -77,7 +77,7 @@ while(True):
         fo.close()
         del unique_cal_points
         del temp_unique_points
-        img.save("test_image_8")
+        img.save("test_image_6")
     if break_away ==1:
         break
 
