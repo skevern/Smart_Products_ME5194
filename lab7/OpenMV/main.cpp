@@ -37,9 +37,9 @@ int main (void)
       		int num = 0;
       		while(num==0)
       		{
-      			num =serialDataAvail(fd1);
-      			//intf("Checking for serial data available\n");
-      			usleep(1000);
+      			num = serialDataAvail(fd1);
+      			printf("Checking for serial data available\n");
+      			usleep(1000000);
       		}
       		data = serialGetchar(fd1);
       		printf("Data Recieved: %d \n", data);

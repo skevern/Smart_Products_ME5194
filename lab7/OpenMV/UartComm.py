@@ -31,5 +31,5 @@ def Uart_sender:
         while(uart.any() !=0):
             print("The returned value is: " ,uart.readchar())
         time.sleep(1000)
-        uart.write('abc')
+        uart.writechar(8)
     #################################
