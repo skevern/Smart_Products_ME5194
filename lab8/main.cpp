@@ -38,6 +38,7 @@
 
 int main()
 {
+	cout << "Made it into the main loop" << endl; 
 	int spi1_fd = open(SPI_DEV, O_RDWR );
 	float sample_time = 0.01;
 	std::string fn = "Signal_History.txt";
@@ -46,16 +47,14 @@ int main()
 	motor.setupController(100,1,1,0.01);
 	motor.startDCMotor();
 	motor.sampleHold(1, S);
-	motor.updateSpeed(700);
-	motor.sampleHold(1.0,S);
-	float motspd=motor.readSpeed();
-	cout<<motspd<<endl;
-	/*for(int i = 0; i<10000;i++)
+	motor.updateSpeed(960);
+	for(int i = 0; i<10;i++)
 	{
-		motor.readSpeed();
-		motor.controlSpeed();
-		motor.sampleHold(10, mS);
-	}*/
+		motor.sampleHold(1000, mS);
+		float motspd = motor.readSpeed();
+		cout<< "Motor Speed is: " << motspd << endl;
+		//motor.controlSpeed();
+	}
 	motor.stopDCMotor();
 	motor.closeLogger();
 	return 0;
