@@ -40,7 +40,7 @@ def Uart_sender():
         #print(20)
         while(uart.any() !=0):
             print("The returned value is: " ,uart.readchar())
-
+        print("I exited the loop")
         time.sleep(1000)
         uart.writechar(8)
 #################################
@@ -57,7 +57,7 @@ def Ball_Identifier():
     img = sensor.snapshot()#.lens_corr(1.7)#.morph(1,[2,4,-2,-4,2,4,-2,-4,2],mult=10,add=0).gaussian(3)
     for c in img.find_circles(threshold =2000 , x_margin = 10, y_margin = 10, r_margin = 10):
         #Filter by color
-        stats = img.get_statistics(roi=(c[0], c[1], c[2], c[2]))
+        stats = img.get_statistics(roi=(c[0], c[1], c[2], c[3]))
         rgb_t = image.lab_to_rgb((stats.l_mean(), stats.a_mean(), stats.b_mean()))
 
         if math.fabs(rgb_t[0] - blue_t[0]) < 20 and math.fabs(rgb_t[1] - blue_t[1]) < 20 and math.fabs(rgb_t[2] - blue_t[2]) < 20:
@@ -106,8 +106,6 @@ def Ball_Identifier():
             print(rgb_t)
 
 
-   # rgb = image. lab_to_rgb(img)
-    #print(rgb)
 #################################
 
 

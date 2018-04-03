@@ -11,16 +11,17 @@ sudo g++ -o main main.cpp -lwiringPi
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>        
-#include<errno.h>
-#include<math.h>
-#include<signal.h>
-#include<unistd.h>
+#include <string.h>        
+#include <errno.h>
+#include <math.h>
+#include  <signal.h>
+#include <unistd.h>
 #include <wiringPi.h>
 #include <wiringSerial.h>
-#include<sstream>
-#include<fstream>
-#include<string.h>
+#include <sstream>
+#include <fstream>
+#include <string.h>
+#include <Robot.h>
 
 int main (void)
 {

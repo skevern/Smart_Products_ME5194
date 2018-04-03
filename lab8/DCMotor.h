@@ -54,7 +54,7 @@ https://pi-plates.com/wp-content/uploads/2015/04/TB6612FNG.pdf
 #define DPS2RPM				3437.74677
 				
 using namespace std;
-
+using namespace std::chrono;
 class DCMotor: public MotorPlate
 {
 public:
@@ -68,22 +68,21 @@ public:
 	DC_MOTOR_DIR dir;
 	int pin_enA;
 	int pin_enB;
-	int stateA;
-	int stateB;
 	float speed_k = 0;
-	clock_t start_time;
-	clock_t end_time;
+	std::chrono::steady_clock::time_point  start_time;
+	std::chrono::steady_clock::time_point  end_time;
+	float timeout = 0.1;
 	string file_name;
 	FILE *pFile;
 	
 	//	Digital Control Members
-	float Ts; // microseconds
+	float Ts; // in seconds
 	float K1, K2, K3;
-	float error_sig_km0 = 0; // error for the k-0 sample
-	float error_sig_km1 = 0;// error for the k-1 sample
-	float error_sig_km2 = 0;// error for the k-2 sample
-	float ctrl_sig_km0 = 0;// control for the k-0 sample
-	float ctrl_sig_km1 = 0;// control for the k-1 sample
+	float error_sig_km0 = 0.0; // error for the k-0 sample
+	float error_sig_km1 = 0.0;// error for the k-1 sample
+	float error_sig_km2 = 0.0;// error for the k-2 sample
+	float ctrl_sig_km0 = 0.0;// control for the k-0 sample
+	float ctrl_sig_km1 = 0.0;// control for the k-1 sample
 	
 	
 	/****************************************************************************************************
@@ -119,5 +118,4 @@ public:
 	~DCMotor() {}
 
 };
-
 #endif
