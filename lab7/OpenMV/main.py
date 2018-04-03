@@ -49,7 +49,7 @@ def Uart_sender():
 #################################
 def Ball_Identifier():
     blue_t = (40, 100, 140)
-    pink_t = (250, 110, 115)
+    pink_t = (180, 155, 155)
     green_t = (70, 160, 90)
     yellow_t = (185, 150, 80)
     orange_t = (240, 140, 70)
@@ -105,6 +105,9 @@ def Ball_Identifier():
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
             print(rgb_t)
 
+    img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
+    print(rgb_t)
+
 
 #################################
 
@@ -114,7 +117,7 @@ def Ball_Identifier():
 while(True):
     clock.tick()
     Ball_Identifier()
-    Uart_sender()
+    #Uart_sender()
     time.sleep(1000)
 #################################
 
