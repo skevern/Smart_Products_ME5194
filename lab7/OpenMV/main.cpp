@@ -5,7 +5,9 @@ green (tx) and white(rx) leads to the RX(P0) and and TX(P1) pins
 on the OpenMV camera, respectively. 
 
 To compile:
-sudo g++ -o main main.cpp -lwiringPi
+sudo g++ -o main main.cpp command.cpp command.h Message.cpp Message.h 
+Packet.cpp Packet.h Protocol.cpp Protocol.h ProtocolDef.h ProtocolID.h 
+RingBuffer.cpp RingBuffer.h Robot.cpp Robot.h -lwiringPi
 ******************************************************************/
 
 #include <iostream>
@@ -14,18 +16,31 @@ sudo g++ -o main main.cpp -lwiringPi
 #include <string.h>        
 #include <errno.h>
 #include <math.h>
-#include  <signal.h>
+#include <signal.h>
 #include <unistd.h>
 #include <wiringPi.h>
 #include <wiringSerial.h>
 #include <sstream>
 #include <fstream>
 #include <string.h>
-#include <Robot.h>
+#include "Robot.h"
+//Set Serial TX&RX Buffer Size
+#define SERIAL_TX_BUFFER_SIZE 64
+#define SERIAL_RX_BUFFER_SIZE 256
+//Set up file path for Dobot communication
+extern int fd;
+int fd = serialOpen( UART_PATH, BAUD_RATE);
 
 int main (void)
 {
-
+	//Dobot Setup
+	int fd = serialOpen( UART_PATH, BAUD_RATE);
+	Robot Dobot;
+	Dobot.setRxInterrupt(100);
+	Dobot.initRAM();
+	ProtocolInit();
+	Dobot.setInitParams();
+	
 	int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
 	wiringPiSetup (); 
 	fflush (stdout);
