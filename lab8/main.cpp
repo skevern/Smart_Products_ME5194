@@ -44,18 +44,21 @@ int main()
 	std::string fn = "Signal_History.txt";
 	DCMotor motor(spi1_fd, fn);
 	motor.setupDCMotor(A0, DC_1, CCW_DC, 0, 0, 26, 13);
-	motor.setupController(100,1,1,0.01);
-	motor.startDCMotor();
+	motor.setupController(1.432,1849000, 0, 0.00000444);	motor.startDCMotor();
 	motor.sampleHold(1, S);
 	motor.reference(5);
-	/*motor.updateSpeed(500);
-	for(int i = 0; i<10;i++)
+	motor.updateSpeed(500);
+	
+	for(int i = 0; i<20;i++)
 	{
+		float ref_speed = motor.reference(float(i));
+		float new_speed = motor.controlSpeed(ref_speed);
+		motor.updateSpeed(new_speed);
 		motor.sampleHold(1000, mS);
-		float motspd = motor.readSpeed();
-		cout<< "Motor Speed is: " << motspd << endl;
-		//motor.controlSpeed();
-	}*/
+		cout << "Desired (Reference) Speed is: " << ref_speed << endl;
+		cout << "New Control Speed is: " << new_speed << endl;
+	}
+	
 	motor.stopDCMotor();
 	motor.closeLogger();
 	return 0;
