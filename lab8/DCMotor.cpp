@@ -110,28 +110,24 @@ float DCMotor::saturation(float speed)
 
 float DCMotor::reference(float time)
 {
-	float speed = 0;                 //initialize speed 
+	//ramp up
+	while (time <= 10)
+	{
+		speed = (960/10)*time;
+	}
 	
-// ramp up speed 
-for ( int count=0 ; count <= 800 ; count++)
-{
-	speed=count; 
-	DCMotor::updateSpeed(speed);
-	DCMotor::sampleHold(100,mS);       //delay the motor speed 
-}
-
-//stay at plateau for an extended time 
-
-     DCMotor::sampleHold(time,S);
-
-//ramp down 
-for ( int count=speed ; count <= 0 ; count--)
-{
-	speed=count; 
-	DCMotor::updateSpeed(speed);
-	DCMotor::sampleHold(100,mS);       //delay the motor speed 
-}
-
+	//plateau
+	while ( time > 10 && time < 20)
+	{
+		speed=960; 
+	}
+	
+	//ramp down
+	while ( time > 20 && time <= 30)
+	{
+		speed= speed - (960/10);
+	}
+	
 	return speed;
 }
 
