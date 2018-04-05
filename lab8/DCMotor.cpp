@@ -110,6 +110,7 @@ float DCMotor::saturation(float speed)
 
 float DCMotor::reference(float time)
 {
+	float speed;
 	//ramp up
 	while (time <= 10)
 	{
@@ -154,6 +155,10 @@ float DCMotor::readSpeed()
 	float t2=time(); //stops the timer 
 	float elapsed_time= t2-t1;  //time in between states 
 	float speed= 1/(elapsed_time*(1120));  //rotational speed in rev/s 
+	
+	float m = 863.442;
+	float b = 89.84;
+	speed = m * speed + b;
 	return speed;
 }
 
@@ -162,9 +167,10 @@ float DCMotor::readSpeed()
 int DCMotor::controlSpeed(float reference_speed)
 {
 	//Fill Code In Here
-	float err = readSpeed() - reference_speed;
+	float err = reference_speed - readSpeed();
 	update_error_hist(err);												//Log our current error into the history
 	float control_value = this->ctrl_sig_km1 + this->K1 * err + this->K2 * this->error_sig_km1 + this->K3 * this->error_sig_km2;
+	cout << "Control Value is: " << control_value << endl;
 	control_value = saturation(control_value);							//Use saturation to make sure we remain within our limits
 	update_control_hist(control_value);									//Update control history
 	return int(control_value);

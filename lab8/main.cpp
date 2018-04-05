@@ -38,23 +38,32 @@
 
 int main()
 {
-	cout << "Made it into the main loop" << endl; 
 	int spi1_fd = open(SPI_DEV, O_RDWR );
 	float sample_time = 0.01;
 	std::string fn = "Signal_History.txt";
 	DCMotor motor(spi1_fd, fn);
 	motor.setupDCMotor(A0, DC_1, CCW_DC, 0, 0, 26, 13);
-	motor.setupController(1.432,1849000, 0, 0.00000444);	motor.startDCMotor();
-	motor.sampleHold(1, S);
-	motor.reference(5);
-	motor.updateSpeed(500);
+	motor.setupController(1.432, 1849000, 0, 0.00000444);
+	motor.startDCMotor();
 	
-	for(int i = 0; i<20;i++)
+	/*motor.updateSpeed(500);
+	motor.sampleHold(5,S);
+	float sum = 0;
+	for (int i = 0; i < 10; i++){
+		cout << "Motor Speed is: " << motor.readSpeed() << endl;
+		motor.sampleHold(1, S);
+		sum += motor.readSpeed();
+	}
+	cout << "The average motor speed was: " << sum/10 << endl; */
+	
+	for(float i = 0.0; i <20; i++)
 	{
-		float ref_speed = motor.reference(float(i));
+		cout << "Made it into the loop" << endl;
+		float ref_speed = motor.reference(i);
+		cout << ref_speed << endl;
 		float new_speed = motor.controlSpeed(ref_speed);
 		motor.updateSpeed(new_speed);
-		motor.sampleHold(1000, mS);
+		motor.sampleHold(1, S);
 		cout << "Desired (Reference) Speed is: " << ref_speed << endl;
 		cout << "New Control Speed is: " << new_speed << endl;
 	}

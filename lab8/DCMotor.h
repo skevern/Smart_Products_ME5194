@@ -102,7 +102,7 @@ public:
 	int logSignals(float time, float ref, float ctrl, float err, float actual);
 	int update_error_hist(float err);
 	int update_control_hist(float ctrl);
-	int controlSpeed();   
+	int controlSpeed(float reference_speed);   
 	float reference(float time);
 	
 //private:
