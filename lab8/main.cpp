@@ -47,14 +47,15 @@ int main()
 	motor.setupController(100,1,1,0.01);
 	motor.startDCMotor();
 	motor.sampleHold(1, S);
-	motor.updateSpeed(960);
+	motor.reference(5);
+	/*motor.updateSpeed(500);
 	for(int i = 0; i<10;i++)
 	{
 		motor.sampleHold(1000, mS);
 		float motspd = motor.readSpeed();
 		cout<< "Motor Speed is: " << motspd << endl;
 		//motor.controlSpeed();
-	}
+	}*/
 	motor.stopDCMotor();
 	motor.closeLogger();
 	return 0;

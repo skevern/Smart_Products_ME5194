@@ -113,7 +113,7 @@ float DCMotor::reference(float time)
 	float speed = 0;                 //initialize speed 
 	
 // ramp up speed 
-for ( int count=0 ; count <= 70 ; count++)
+for ( int count=0 ; count <= 800 ; count++)
 {
 	speed=count; 
 	DCMotor::updateSpeed(speed);
@@ -163,7 +163,7 @@ float t2=time(); //stops the timer
 float elapsed_time= t2-t1;  //time in between states 
 
 
-float speed= 1/(elapsed_time*(2*1120));  //rotational speed in rev/s 
+float speed= 1/(elapsed_time*(1120));  //rotational speed in rev/s 
 
 return speed;
 
