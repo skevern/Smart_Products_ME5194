@@ -104,31 +104,24 @@ int DCMotor::update_control_hist(float ctrl)
 float DCMotor::saturation(float speed)
 {
 	if(speed > ((float)MAX_DPS)) {speed = ((float)MAX_DPS-10);}
-	if(speed<0) {speed =0;}
+	if(speed<200) {speed =200;}
 	return speed;
 }
 
 float DCMotor::reference(float time)
 {
-	float speed;
+	float speed = 0;
 	//ramp up
-	while (time <= 10)
+	if (time <= 10)
 	{
-		speed = (960/10)*time;
+		speed = 200 + (760/10)*time;
 	}
 	
 	//plateau
-	while ( time > 10 && time < 20)
+	else if ( time > 10 && time < 20)
 	{
-		speed=960; 
+		speed = 960; 
 	}
-	
-	//ramp down
-	while ( time > 20 && time <= 30)
-	{
-		speed= speed - (960/10);
-	}
-	
 	return speed;
 }
 
@@ -168,9 +161,10 @@ int DCMotor::controlSpeed(float reference_speed)
 {
 	//Fill Code In Here
 	float err = reference_speed - readSpeed();
+	err = err / 15;
+	cout << "The error is: " << err << endl;
 	update_error_hist(err);												//Log our current error into the history
 	float control_value = this->ctrl_sig_km1 + this->K1 * err + this->K2 * this->error_sig_km1 + this->K3 * this->error_sig_km2;
-	cout << "Control Value is: " << control_value << endl;
 	control_value = saturation(control_value);							//Use saturation to make sure we remain within our limits
 	update_control_hist(control_value);									//Update control history
 	return int(control_value);

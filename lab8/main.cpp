@@ -56,17 +56,17 @@ int main()
 	}
 	cout << "The average motor speed was: " << sum/10 << endl; */
 	
-	for(float i = 0.0; i <20; i++)
+	for(float i = 0.0; i < 20; i += 0.2)
 	{
-		cout << "Made it into the loop" << endl;
 		float ref_speed = motor.reference(i);
-		cout << ref_speed << endl;
 		float new_speed = motor.controlSpeed(ref_speed);
 		motor.updateSpeed(new_speed);
-		motor.sampleHold(1, S);
-		cout << "Desired (Reference) Speed is: " << ref_speed << endl;
+		motor.sampleHold(200, mS);
+		cout << "\nDesired (Reference) Speed is: " << ref_speed << endl;
+		cout << "Actual (Encoder) Speed is: " << motor.readSpeed() << endl;
 		cout << "New Control Speed is: " << new_speed << endl;
 	}
+	motor.updateSpeed(0);
 	
 	motor.stopDCMotor();
 	motor.closeLogger();
