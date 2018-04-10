@@ -116,11 +116,11 @@ float DCMotor::reference(float time)
 	{
 		speed = 200 + (760/10)*time;
 	}
-	
+
 	//plateau
 	else if ( time > 10 && time < 20)
 	{
-		speed = 960; 
+		speed = 960;
 	}
 	return speed;
 }
@@ -129,26 +129,31 @@ float DCMotor::reference(float time)
 
 float DCMotor::readSpeed()
 {
-	int readValA= MotorPlate::GPIO::digitalRead(this->pin_enA );         //reads the current state of encoders and stores its value
-	int readValB= MotorPlate::GPIO::digitalRead(this->pin_enB );  
 	float timeout = DCMotor::time();
 	float to_val = 0.1;
-	while ((readValA == MotorPlate::GPIO::digitalRead(this->pin_enA )) && (readValB == MotorPlate::GPIO::digitalRead(this->pin_enB )))  //when we exit the while loop we have switched states 
+
+	//Read the current state of encoders and stores its value
+	int readValA = MotorPlate::GPIO::digitalRead(this->pin_enA );
+	int readValB = MotorPlate::GPIO::digitalRead(this->pin_enB );
+
+	//Wait until either pin_enA or pin_enB value changes, indicating an encoder pulse
+	while ((readValA == MotorPlate::GPIO::digitalRead(this->pin_enA )) && (readValB == MotorPlate::GPIO::digitalRead(this->pin_enB )))
 	{
+		//Time out if this operation takes more than 0.1 seconds
 		if((DCMotor::time()-timeout)> to_val){return 0.0;}
 	}
 	float t1= time(); //starts the timer
-	readValA= MotorPlate::GPIO::digitalRead(this->pin_enA );         //reads the current state of encoders and stores its value
-	readValB= MotorPlate::GPIO::digitalRead(this->pin_enB );  
-	to_val = 0.1;
-	while ((readValA == MotorPlate::GPIO::digitalRead(this->pin_enA )) && (readValB == MotorPlate::GPIO::digitalRead(this->pin_enB )))  //when we exit the while loop we have switched states 
-	{
+	//Repeat the process, start by reading current encoder values
+	readValA= MotorPlate::GPIO::digitalRead(this->pin_enA );
+	readValB= MotorPlate::GPIO::digitalRead(this->pin_enB );
 
-	}
-	float t2=time(); //stops the timer 
-	float elapsed_time= t2-t1;  //time in between states 
-	float speed= 1/(elapsed_time*(1120));  //rotational speed in rev/s 
-	
+	//Wait for a state change
+	while ((readValA == MotorPlate::GPIO::digitalRead(this->pin_enA )) && (readValB == MotorPlate::GPIO::digitalRead(this->pin_enB ))){}
+	float t2=time(); //stops the timer
+	float elapsed_time= t2-t1;  //time in between states
+	float speed= 1/(elapsed_time*(1120));  //rotational speed in rev/s
+
+	//Convert speed to 0-960 range used by control system
 	float m = 863.442;
 	float b = 89.84;
 	speed = m * speed + b;
@@ -159,14 +164,13 @@ float DCMotor::readSpeed()
 
 int DCMotor::controlSpeed(float reference_speed)
 {
-	//Fill Code In Here
+	//Calculate the error between our desired and current speeds
 	float err = reference_speed - readSpeed();
-	err = err / 15;
-	cout << "The error is: " << err << endl;
+	err = err / 15;																//Apply gain to feedback portion of loop
 	update_error_hist(err);												//Log our current error into the history
+	//Calculate the control value using the provided K1, K2, and K3 variables
 	float control_value = this->ctrl_sig_km1 + this->K1 * err + this->K2 * this->error_sig_km1 + this->K3 * this->error_sig_km2;
-	control_value = saturation(control_value);							//Use saturation to make sure we remain within our limits
-	update_control_hist(control_value);									//Update control history
+	control_value = saturation(control_value);		//Use saturation to make sure we remain within our limits
+	update_control_hist(control_value);						//Update control history
 	return int(control_value);
 }
-
