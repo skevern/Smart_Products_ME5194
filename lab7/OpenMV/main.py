@@ -8,6 +8,7 @@
 import sensor, image, time, math
 from image import *
 from pyb import UART
+import math
 
 #Sensor Setup
 #################################
@@ -31,18 +32,10 @@ clock = time.clock()
 def Uart_sender():
     uart = UART(1, 9600, timeout_char=1000)                         # init with given baudrate
     uart.init(9600, bits=8, parity=None, stop=1, timeout_char=1000) # init with given parameters
-
-    clock = time.clock()
-    while(True):
-        clock.tick()
-        while(uart.any() ==0):
-            continue
-        #print(20)
-        while(uart.any() !=0):
-            print("The returned value is: " ,uart.readchar())
-        print("I exited the loop")
-        time.sleep(1000)
-        uart.writechar(8)
+    print(mylist)
+    if (uart.any() !=0):
+        print("The recieved value is: " ,uart.readchar())
+        uart.write(mylist.pop(0))
 #################################
 
 #Ball Identification Function
@@ -55,6 +48,7 @@ def Ball_Identifier():
     orange_t = (240, 140, 70)
     circle_data = []
     img = sensor.snapshot()#.lens_corr(1.7)#.morph(1,[2,4,-2,-4,2,4,-2,-4,2],mult=10,add=0).gaussian(3)
+    color = 0
     for c in img.find_circles(threshold =2000 , x_margin = 10, y_margin = 10, r_margin = 10):
         #Filter by color
         stats = img.get_statistics(roi=(c[0], c[1], c[2], c[3]))
@@ -67,7 +61,7 @@ def Ball_Identifier():
             circle_data.append(c[3]);
             print("Found a blue ball!")
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-            print(rgb_t)
+            color = 0
 
         if math.fabs(rgb_t[0] - pink_t[0]) < 20 and math.fabs(rgb_t[1] - pink_t[1]) < 20 and math.fabs(rgb_t[2] - pink_t[2]) < 20:
             circle_data.append(c[0]);
@@ -76,7 +70,7 @@ def Ball_Identifier():
             circle_data.append(c[3]);
             print("Found a pink ball!")
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-            print(rgb_t)
+            color = 1
 
         if math.fabs(rgb_t[0] - green_t[0]) < 20 and math.fabs(rgb_t[1] - green_t[1]) < 20 and math.fabs(rgb_t[2] - green_t[2]) < 20:
             circle_data.append(c[0]);
@@ -85,7 +79,7 @@ def Ball_Identifier():
             circle_data.append(c[3]);
             print("Found a green ball!")
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-            print(rgb_t)
+            color = 2
 
         if math.fabs(rgb_t[0] - yellow_t[0]) < 20 and math.fabs(rgb_t[1] - yellow_t[1]) < 20 and math.fabs(rgb_t[2] - yellow_t[2]) < 20:
             circle_data.append(c[0]);
@@ -94,7 +88,7 @@ def Ball_Identifier():
             circle_data.append(c[3]);
             print("Found a yellow ball!")
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-            print(rgb_t)
+            color = 3
 
         if math.fabs(rgb_t[0] - orange_t[0]) < 20 and math.fabs(rgb_t[1] - orange_t[1]) < 20 and math.fabs(rgb_t[2] - orange_t[2]) < 20:
             circle_data.append(c[0]);
@@ -103,14 +97,32 @@ def Ball_Identifier():
             circle_data.append(c[3]);
             print("Found an orange ball!")
             img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-            print(rgb_t)
+            color = 4
 
-    img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-    print(rgb_t)
-
+        if (True):
+            img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
+            array = [c.x(), c.y(), c.r(), color]
+            listmanager(array)
+            Uart_sender()
 
 #################################
 
+#List  Management Function
+#################################
+mylist = []
+def listmanager(input_array):
+    err_total = 15
+    thresh = 3
+    for iter_array in mylist:
+        errx = abs(iter_array[0] - input_array[0])
+        erry = abs(iter_array[1] - input_array[1])
+        err_temp= math.sqrt(errx^2 + erry^2)
+        if (err_temp < err_total):
+            err_total = err_temp
+    print(err_total)
+    if (err_total > thresh):
+       mylist.append(input_array)
+       print(input_array)
 
 #Main Loop
 #################################
