@@ -100,16 +100,42 @@ int camera_to_dobot(int x, int y){
 int main (void)
 {
 	//Testing the camera_to_dobot function
-	camera_to_dobot(5,5);
+	//camera_to_dobot(5,5);
 	//Dobot Setup
 	int fd = serialOpen( UART_PATH, BAUD_RATE);
-	//Robot Dobot;
-	//Dobot.setRxInterrupt(100);
-	//Dobot.initRAM();
-	//ProtocolInit();
-	//Dobot.setInitParams();
+	Robot Dobot;
+	Dobot.setRxInterrupt(100);
+	Dobot.initRAM();
+	ProtocolInit();
+	Dobot.setInitParams();
+	top_left[] = {280,145};
+	top_right[] = {300,-60};
+	bottom_left[] = {105,135}
+	bottom_right[] = {120,-75};
+	z_scan = 25;
+	int x;
+	int y;
+	int z;
+	int start = 0;
+	while(start == 0){
+		/*cout << "Enter the x point for the dobot:" << endl;
+		cin >> x;
+		cout << "Enter the y point for the dobot:" << endl;
+		cin >> y;
+		cout << "Enter the z point for the dobot:" << endl;
+		cin >> z;*/
+		Dobot.goToXYZ(x, y, z, true);
+		/*Dobot.goToXYZ(225, -75, 130, true);
+		Dobot.goToXYZ(120,-75,0,true);
+		Dobot.goToXYZ(105,135,0,true);
+		Dobot.goToXYZ(280,145,0,true);
+		Dobot.goToXYZ(300,-60,0,true);
+		Dobot.goToXYZ(225,-60,130,true);
+		Dobot.goToXYZ(150,-195,130,true);
+		Dobot.goToXYZ(225, -75, 130, true);*/
+	}
 	
-	int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
+	/*int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
 	wiringPiSetup (); 
 	fflush (stdout);
  	int i = 0;
@@ -128,7 +154,7 @@ int main (void)
       		printf("Data Recieved: %d \n", data);
       		i++;
       	}
-      serialClose(fd1);
+      serialClose(fd1);*/
   return 0 ;
 }
 
