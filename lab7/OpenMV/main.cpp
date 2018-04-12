@@ -26,81 +26,42 @@ RingBuffer.cpp RingBuffer.h Robot.cpp Robot.h Matrix.cpp Matrix.h -lwiringPi
 #include "Robot.h"
 #include "Matrix.h"
 
-//Set Serial TX&RX Buffer Size
+// Set Serial TX&RX Buffer Size
 #define SERIAL_TX_BUFFER_SIZE 64
 #define SERIAL_RX_BUFFER_SIZE 256
-//Set up file path for Dobot communication
+// Set up file path for Dobot communication
 extern int fd;
 int fd = serialOpen( UART_PATH, BAUD_RATE);
 
-int camera_to_dobot(int x, int y){
-	//Store the four corners as seen by the camera
-	float top_left_x = 0;
-	float top_right_x = 10;
-	float bottom_left_x = 2;
-	float bottom_right_x = 8;
-	float top_y = 10;
-	float bottom_y = 0;
-	int width = 10;
-	int height = 10;
+void Search(){
+	//Open the USB port and set up wiringPi
+	int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
+	wiringPiSetup (); 
+	fflush (stdout);
 	
-	//Create a matrix the proper size
-	Matrix<float> X(width, height);
-	Matrix<float> Y(width, height);
-	
-	//Fill the matrix with the proper X values
-	for (int i = 0; i < height; i++){
-		float left_ref = (top_left_x + ((bottom_left_x - top_left_x) / (height - 1)) * i);
-		float right_ref = (top_right_x - ((top_right_x - bottom_right_x) / (height - 1)) * i);
-		
-		for (int j = 0; j < width; j++){
-			X(i,j) = left_ref + ((right_ref - left_ref)/ (width - 1)) * j;
-			//cout << "X: " << X(i,j) << endl;
+	//Send requests until the camera responds to us
+	bool request_received = false;
+	while(!request_received)
+	{
+		//Send them a 13 to indicate we want circle data
+		serialPutchar (fd1, 13);
+		//
+		int num = 0;
+		while(num==0)
+		{
+			num = serialDataAvail(fd1);
+			usleep(1000);
 		}
-	}
-	//Fill the matrix with the proper Y values
-	for (int i = 0; i < height; i++){
-		
-		for (int j = 0; j < width; j++){
-			Y(i,j) = top_y - ((top_y - bottom_y) / (height - 1)) * i;
-			//cout << " Y: " << Y(i,j) << endl;
-		}
-	}
+		int data = serialGetchar(fd1);
+		printf("Data Recieved: %d \n", data);
+		i++;
+    }
+    serialClose(fd1);
 	
-	//Determine which of the existing points our dobot point is closest to
-	float y_error;
-	float x_error;
-	float temp_error;
-	float total_error = 1000;
-	int pos_x;
-	int pos_y;
-	
-	for (int i = 0; i < height; i++){
-		for (int j = 0; j < width; j++){
-			x_error = abs(x - X(i,j));
-			y_error = abs(y - Y(i,j));
-			//cout << "x_error is: " << x_error << endl;
-			//cout << "y_error is: " << y_error << endl;
-			temp_error = pow(pow(x_error,2) + pow(y_error,2),0.5);
-			if ( temp_error < total_error){
-				total_error = temp_error;
-				pos_x = j;
-				pos_y = i;
-				//cout << "I set a new total error" << endl;
-			}
-		}
-	}
-	//cout << "The x position is: " << pos_x << endl;
-	//cout << "The y position is: " << pos_y << endl; 
-	return pos_x, pos_y;
-}
-
-
 
 int main (void)
 {
-	//Testing the camera_to_dobot function
-	//camera_to_dobot(5,5);
+	
 	//Dobot Setup
 	int fd = serialOpen( UART_PATH, BAUD_RATE);
 	Robot Dobot;
@@ -108,11 +69,17 @@ int main (void)
 	Dobot.initRAM();
 	ProtocolInit();
 	Dobot.setInitParams();
-	top_left[] = {280,145};
-	top_right[] = {300,-60};
-	bottom_left[] = {105,135}
-	bottom_right[] = {120,-75};
-	z_scan = 25;
+	int top_left[] = {280,145};
+	int top_right[] = {300,-60};
+	int bottom_left[] = {105,135}
+	int bottom_right[] = {120,-75};
+	int z_scan = 25;
+	
+	//Scanning routine
+	Dobot.goToXYZ(top_left[0], top_left[1], z_scan, true);				//Move to the top left
+	Search();
+	
+	//Testing the dobot to move to coordinates we specify
 	int x;
 	int y;
 	int z;
@@ -134,27 +101,6 @@ int main (void)
 		Dobot.goToXYZ(150,-195,130,true);
 		Dobot.goToXYZ(225, -75, 130, true);*/
 	}
-	
-	/*int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
-	wiringPiSetup (); 
-	fflush (stdout);
- 	int i = 0;
- 	int data = 0;
-	while(i<10)
-	{
-		int send_data = 5;
-      		serialPutchar (fd1, send_data);
-      		int num = 0;
-      		while(num==0)
-      		{
-      			num = serialDataAvail(fd1);
-      			usleep(1000000);
-      		}
-      		data = serialGetchar(fd1);
-      		printf("Data Recieved: %d \n", data);
-      		i++;
-      	}
-      serialClose(fd1);*/
   return 0 ;
 }
 
