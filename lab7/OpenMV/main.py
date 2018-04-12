@@ -29,13 +29,28 @@ clock = time.clock()
 
 #Communication Setup
 #################################
+uart = UART(1, 9600, timeout_char=1000)                         # init with given baudrate
+uart.init(9600, bits=8, parity=None, stop=1, timeout_char=1000) # init with given parameters
+
 def Uart_sender():
-    uart = UART(1, 9600, timeout_char=1000)                         # init with given baudrate
-    uart.init(9600, bits=8, parity=None, stop=1, timeout_char=1000) # init with given parameters
-    print(mylist)
-    if (uart.any() !=0):
-        print("The recieved value is: " ,uart.readchar())
-        uart.write(mylist.pop(0))
+    clock = time.clock()
+    loop_control = True
+    while(loop_control):
+        clock.tick()
+
+        #Wait while there is no data available
+        while(uart.any() == 0):
+            pass
+        #Now that there is data available, print it!
+        while(True):
+            returned_value = uart.readchar()
+            if (returned_value == 13):
+                #Send a response until it is received and confirmed
+                read_keys = 600
+                uart.writechar(read_keys)
+                print("I wrote back the value: ", read_keys)
+                break
+
 #################################
 
 #Ball Identification Function
@@ -150,8 +165,9 @@ def listmanager(input_array):
 while(True):
     clock.tick()
     Ball_Identifier()
-    #Uart_sender()
-    time.sleep(1000)
+    Uart_sender()
+    print("Uart_sender() function is over")
+    time.sleep(100000)
 #################################
 
 

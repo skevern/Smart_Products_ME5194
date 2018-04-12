@@ -25,6 +25,8 @@ RingBuffer.cpp RingBuffer.h Robot.cpp Robot.h Matrix.cpp Matrix.h -lwiringPi
 #include <string.h>
 #include "Robot.h"
 #include "Matrix.h"
+#include <thread>
+#include <chrono>        
 
 // Set Serial TX&RX Buffer Size
 #define SERIAL_TX_BUFFER_SIZE 64
@@ -33,31 +35,35 @@ RingBuffer.cpp RingBuffer.h Robot.cpp Robot.h Matrix.cpp Matrix.h -lwiringPi
 extern int fd;
 int fd = serialOpen( UART_PATH, BAUD_RATE);
 
-void Search(){
+int Search(){
 	//Open the USB port and set up wiringPi
 	int fd1 = serialOpen ("/dev/ttyUSB0", 9600);
 	wiringPiSetup (); 
-	fflush (stdout);
+	fflush(stdout);
 	
 	//Send requests until the camera responds to us
 	bool request_received = false;
-	while(!request_received)
-	{
-		//Send them a 13 to indicate we want circle data
-		serialPutchar (fd1, 13);
-		//
-		int num = 0;
-		while(num==0)
-		{
-			num = serialDataAvail(fd1);
-			usleep(1000);
-		}
-		int data = serialGetchar(fd1);
-		printf("Data Recieved: %d \n", data);
-		i++;
-    }
-    serialClose(fd1);
+	int data = 0;
+	int num = 0;
+	int input = 0;
 	
+	while(request_received == false){
+		
+		cout << "Input the number to send to the camera: ";
+		cin >> input;	
+		serialPutchar (fd1, int(input));
+		num = 0;
+		while (serialDataAvail(fd1) == 0){
+			num = serialDataAvail(fd1);
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		}
+		data = serialGetchar(fd1);
+		cout << "The returned value was: " << data << endl;
+		request_received = true;
+		}
+    serialClose(fd1);
+	return data;
+}
 
 int main (void)
 {
@@ -71,14 +77,14 @@ int main (void)
 	Dobot.setInitParams();
 	int top_left[] = {280,145};
 	int top_right[] = {300,-60};
-	int bottom_left[] = {105,135}
+	int bottom_left[] = {105,135};
 	int bottom_right[] = {120,-75};
 	int z_scan = 25;
 	
 	//Scanning routine
-	Dobot.goToXYZ(top_left[0], top_left[1], z_scan, true);				//Move to the top left
-	Search();
-	
+	//Dobot.goToXYZ(top_left[0], top_left[1], z_scan, true);				//Move to the top left
+	int return_from_search = Search();									//Ask the camera for ball positions
+	cout << "Return from search: " << return_from_search << endl; 		
 	//Testing the dobot to move to coordinates we specify
 	int x;
 	int y;
