@@ -83,29 +83,31 @@ int main (void)
 	
 	//Scanning routine
 	//Dobot.goToXYZ(top_left[0], top_left[1], z_scan, true);				//Move to the top left
-	int return_from_search = Search();									//Ask the camera for ball positions
-	cout << "Return from search: " << return_from_search << endl; 		
+	//int return_from_search = Search();									//Ask the camera for ball positions
+	//cout << "Return from search: " << return_from_search << endl; 		
 	//Testing the dobot to move to coordinates we specify
 	int x;
 	int y;
 	int z;
 	int start = 0;
-	while(start == 0){
+	while(true){
 		/*cout << "Enter the x point for the dobot:" << endl;
 		cin >> x;
 		cout << "Enter the y point for the dobot:" << endl;
 		cin >> y;
 		cout << "Enter the z point for the dobot:" << endl;
-		cin >> z;*/
-		Dobot.goToXYZ(x, y, z, true);
-		/*Dobot.goToXYZ(225, -75, 130, true);
+		cin >> z;*/ 
+		//Dobot.goToXYZ(x, y, z, true);
+		cout << "I'm trying!" << endl;
+		Dobot.goToXYZ(225, -75, 130, true);
+		cout << "Still trying" << endl;
 		Dobot.goToXYZ(120,-75,0,true);
 		Dobot.goToXYZ(105,135,0,true);
 		Dobot.goToXYZ(280,145,0,true);
 		Dobot.goToXYZ(300,-60,0,true);
 		Dobot.goToXYZ(225,-60,130,true);
 		Dobot.goToXYZ(150,-195,130,true);
-		Dobot.goToXYZ(225, -75, 130, true);*/
+		Dobot.goToXYZ(225, -75, 130, true);
 	}
   return 0 ;
 }

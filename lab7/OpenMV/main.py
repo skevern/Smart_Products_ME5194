@@ -134,11 +134,8 @@ def Ball_Identifier():
 
             if (color != 0):
                 #img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
-                array = [c.x(), c.y(), c.r(), color]
-                #listmanager(array)
-                #Uart_sender()
-                #print(array)
-                #print(rgb_t)
+                array = [c.x(), c.y(), c.r(), color, 0]
+                listmanager(array)
             img.draw_circle(72,55,15, color = (255, 255, 255))
             #print(rgb_t, c.r())
 #################################
@@ -154,7 +151,7 @@ def listmanager(input_array):
         erry = abs(iter_array[1] - input_array[1])
         err_temp= math.sqrt(errx^2 + erry^2)
         if (err_temp < err_total):
-            err_total = err_temp
+            iter_array[4] += 1
     print(err_total)
     if (err_total > thresh):
        mylist.append(input_array)
@@ -164,7 +161,9 @@ def listmanager(input_array):
 #################################
 while(True):
     clock.tick()
-    Ball_Identifier()
+    for i in range(0,30):
+        Ball_Identifier()
+        time.sleep(1)
     Uart_sender()
     print("Uart_sender() function is over")
     time.sleep(100000)
